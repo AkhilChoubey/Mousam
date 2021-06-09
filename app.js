@@ -1,56 +1,6 @@
-// const express = require("express");
-// const https = require("https");
-// var favicon = require("serve-favicon");
-// var path = require("path");
-// var app = express();
-
-// //app.use(favicon(path.join(__dirname, "favicon.ico")));
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(__dirname));
-// app.get("/", function (req, res) {
-//   res.sendFile(__dirname + "/index.html");
-
-//   // res.send("Server is running");
-// });
-
-// app.post("/", function (req, res) {
-//   const city = req.body.cityName;
-//   const appid = "e1d9fb89234620533b14000d110a198f";
-//   const units = "metric";
-//   const url =
-//     "https://api.openweathermap.org/data/2.5/weather?q=" +
-//     city +
-//     "&appid=" +
-//     appid +
-//     "&units=" +
-//     units;
-
-//   https.get(url, function (request, response) {
-//     //console.log(response.statusCode);
-
-//     response.on("data", function (data) {
-//       const weatherData = JSON.parse(data);
-//       document.querySelector(".weather-box .temp").innerHTML =
-//         weatherData.main.temp + "°c";
-//       //const weatherDesc = weatherData.weather[0].description;
-//       //const icon = weatherData.weather[0].icon;
-//       //const imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-
-//       // res.write(city + weatherData.main.temp);
-//       // res.write("Weather Discription is " + weatherDesc);
-//       // res.write("<img src=" + imgURL + ">");
-//       //res.sendFile(__dirname + "/index.html");
-//     });
-//   });
-// });
-
-// app.listen(3000, function () {
-//   console.log("The server is running on port 3000");
-// });
-
 const express = require("express");
 const https = require("https");
-
+var port = process.env.PORT || 3000;
 var app = express();
 
 //app.use(favicon(path.join(__dirname, "favicon.ico")));
@@ -99,6 +49,6 @@ app.post("/", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("The server is running on port 3000");
 });
