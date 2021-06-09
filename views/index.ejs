@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>weather project</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+   
+  </head>
+
+  <body>
+    <% if (data===''){ %>
+    <div id="app">
+      <main>
+        <div class="search-box">
+          <form class="formStyle" action="/" method="post">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Enter the City / Country /State name ... (Ex- Chennai ,India ,Jharkhand ,etc)"
+              id="cityInput"
+              name="cityName"
+            />
+            <!-- @keypress="fetchWeather" part of input -->
+            <button class="btn" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="weather-wrap">
+          <!-- v-if="typeof weather.main != 'undefined'" -->
+          <div class="location-box">
+            <div class="location">
+               London ,  UK
+            </div>
+            
+          </div>
+
+          <div class="weather-box">
+            <div class="temp">
+              8<!-- {{ Math.round(weather.main.temp) }}-->°c
+            </div>
+            <div class="weather">
+             Clouds<!-- {{ weather.weather[0].main }}  -->
+            </div>
+          </div>
+          <div class="weather-box">
+          <div class="temp1"><!-- {{ Math.round(weather.main.temp) }}-->
+          	<ul style="margin:1rem; list-style-type:none;">
+          		<li class="liStyle">Wind :  m/s </li>
+          		<li class="liStyle">Pressure :  mb</li>
+          		<li class="liStyle">Visibility : km</li>
+          		<li class="liStyle">Humidity : %</li>
+          		<li class="liStyle lastLi">Cloudiness : %</li>	
+          	</ul>
+
+           </div>
+      </div>
+        </div>
+        <% } else if(data ==='0') { %>
+          <div id="app">
+      <main>
+        <div class="search-box">
+          <form class="formStyle" action="/" method="post">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Enter the City / Country /State name ... (Ex- Chennai ,India ,Jharkhand ,etc)"
+              id="cityInput"
+              name="cityName"
+            />
+            <!-- @keypress="fetchWeather" part of input -->
+            <button class="btn" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <div class="weather-wrap">
+          <!-- v-if="typeof weather.main != 'undefined'" -->
+          <div class="location-box">
+            <div class="location">
+               ---- ,  --
+            </div>
+            
+          </div>
+
+          <div class="weather-box">
+            <div class="temp">
+              -<!-- {{ Math.round(weather.main.temp) }}-->°c
+            </div>
+            <div class="weather">
+             -----<!-- {{ weather.weather[0].main }}  -->
+            </div>
+          </div>
+          <div class="weather-box">
+          <div class="temp1"><!-- {{ Math.round(weather.main.temp) }}-->
+          	Invalid City / State Name!
+            Please inter a valid name.
+
+           </div>
+      </div>
+        </div>
+          
+          <% } else { %>
+      <div id="app">
+      <main>
+        
+        <% if((data.weather[0].main) === "Clear") { %>
+          <style>
+            #app {
+              background-image: url(/sunny.jpg);
+            }
+          </style>
+         <% } else if(data.weather[0].main === "Thunderstorm") { %>
+             <style>
+            #app {
+              background-image: url(/thunder.jpg);
+            }
+          </style>
+          <% } else if(data.weather[0].main === "Rain"){ %>
+          <style>
+            #app {
+              background-image: url(/rain.jpg);
+            }
+          </style>
+          <% } else if(data.weather[0].main === "Snow"){ %>
+ <style>
+            #app {
+              background-image: url(/cold.jpg);
+            }
+          </style>
+
+          <% } else if(data.weather[0].main === "Clouds"){ %>  
+             <style>
+            #app {
+              background-image: url(/clouds.jpg);
+            }
+          </style>
+          <% } else { %>  
+            <style>
+            #app {
+              background-image: url(/default.jpg);
+            }
+          </style>
+<% } %>
+        <div class="search-box">
+          <form class="formStyle" action="/" method="post">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Enter the City / State Name ... (Ex- Chennai ,Jharkhand ,etc)"
+              id="cityInput"
+              name="cityName"
+            />
+            <!-- @keypress="fetchWeather" part of input -->
+            <button class="btn" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="weather-wrap">
+          <!-- v-if="typeof weather.main != 'undefined'" -->
+          <div class="location-box">
+            <div class="location">
+               <%=data.name%> ,  <%=data.sys.country%>
+            </div>
+          
+          </div>
+
+          <div class="weather-box">
+            <div class="temp">
+              <%=data.main.temp%><!-- {{ Math.round(weather.main.temp) }}-->°c
+            </div>
+            <div class="weather">
+             <%=data.weather[0].main%><!-- {{ weather.weather[0].main }}  -->
+            </div>
+          </div>
+          <div class="weather-box">
+          <div class="temp1"><!-- {{ Math.round(weather.main.temp) }}-->
+          	<ul style="margin:1rem; list-style-type:none;">
+          		<li class="liStyle"><i class="fas fa-wind"></i>Wind : <%= data.wind.speed %> m/s </li>
+          		<li class="liStyle">Pressure : <%= data.main.pressure %> mb</li>
+          		<li class="liStyle">Visibility : <%= data.visibility/1000 %> km</li>
+          		<li class="liStyle">Humidity : <%= data.main.humidity %>%</li>
+          		<li class="liStyle lastLi">Cloudiness : <%= data.clouds.all %>%</li>	
+          	</ul>
+
+           </div>
+      </div>
+        </div>
+      </main>
+    </div>
+<% } %>
+      <!-- Copyright -->
+      <div class="social-buttons">
+  <a href="https://www.facebook.com/profile.php?id=100009258792168" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+    <span class="social-button__inner">
+     <!-- <i class="fab fa-facebook-f"></i> -->
+     fb
+    </span>
+  </a>
+  <a href="https://www.linkedin.com/in/akhil-choubey-376887192" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+    <span class="social-button__inner">
+     <i class="fab fa-linkedin-in"></i>
+     in
+    </span>
+  </a>
+  <!-- <a href="https://www.instagram.com/ironakhil" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+    <span class="social-button__inner">
+      <i class="fab fa-instagram"></i> 
+     
+    </span> -->
+  </a>
+  <!-- <a href="https://twitter.com/AkhilKrChoubey1?s=08" class="social-buttons__button social-button social-button--github" aria-label="GitHub">
+    <span class="social-button__inner">
+     <i class="fab fa-twitter"></i> 
+    </span>
+  </a> -->
+  <a href="mailto:akhilchoubeys@gmail.com" class="social-buttons__button social-button social-button--codepen" aria-label="CodePen">
+    <span class="social-button__inner">
+     <!-- <i class="fab fa-google-plus-g"></i> --> 
+     G+
+    </span>
+  </a>
+</div>
+      <div class="copyRight footer-copyright text-center py-3">
+        © 2021 Copyright : Akhil Choubey
+      </div>
+      <!-- Copyright -->
+    </footer> -->
+  </body>
+</html>
