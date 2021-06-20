@@ -97,7 +97,7 @@
           <div class="weather-box">
           <div class="temp1"><!-- {{ Math.round(weather.main.temp) }}-->
           	Invalid City / State Name!
-            Please inter a valid name.
+            Please Provide a valid name.
 
            </div>
       </div>
@@ -110,38 +110,59 @@
         <% if((data.weather[0].main) === "Clear") { %>
           <style>
             #app {
-              background-image: url(/sunny.jpg);
+              /*background-image: url(/sunny.jpg);*/
+              background: url(/sunnyy.gif);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
          <% } else if(data.weather[0].main === "Thunderstorm") { %>
              <style>
             #app {
               background-image: url(/thunder.jpg);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
           <% } else if(data.weather[0].main === "Rain"){ %>
           <style>
             #app {
-              background-image: url(/rain.jpg);
+              /*background-image: url(/rain.jpg);*/
+              background: url(/rainy.gif);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
           <% } else if(data.weather[0].main === "Snow"){ %>
  <style>
             #app {
-              background-image: url(/cold.jpg);
+              background: url(/snowy.gif);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
 
           <% } else if(data.weather[0].main === "Clouds"){ %>  
              <style>
             #app {
-              background-image: url(/clouds.jpg);
+              background: url(/cloudy.gif);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
           <% } else { %>  
             <style>
             #app {
-              background-image: url(/default.jpg);
+              /*background-image: url(/default.jpg);*/
+              background: url(/defaultt.gif);
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
             }
           </style>
 <% } %>
@@ -181,6 +202,7 @@
           <div class="weather-box">
           <div class="temp1"><!-- {{ Math.round(weather.main.temp) }}-->
           	<ul style="margin:1rem; list-style-type:none;">
+              <li class="liStyle">Feels like : <%= data.main.feels_like %>°c </li>
           		<li class="liStyle"><i class="fas fa-wind"></i>Wind : <%= data.wind.speed %> m/s </li>
           		<li class="liStyle">Pressure : <%= data.main.pressure %> mb</li>
           		<li class="liStyle">Visibility : <%= data.visibility/1000 %> km</li>

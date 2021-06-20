@@ -7,7 +7,11 @@ body {
   font-family: "montserrat", sans-serif;
 }
 #app {
-  background-image: url("sunny.jpg");
+  /*  background-image: url("sunny.jpg");
+*/
+  background: url("sunnyy.gif");
+  background-repeat: no-repeat;
+
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;
@@ -143,7 +147,7 @@ main {
   }
   .weather-box .temp1 {
     width: 50%;
-    height: 16rem;
+    height: 20rem;
     font-size: 35px;
   }
   .liStyle {
